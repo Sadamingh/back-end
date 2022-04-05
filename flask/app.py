@@ -19,4 +19,4 @@ def owner():
     return redirect(url_for("user", name="owner!"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
