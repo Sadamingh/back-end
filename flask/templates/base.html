@@ -2,12 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>{% block content %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <p>{{something}}</p>
-    {% for _ in range(10) %}
-      <p>loop!</p>
-    {% endfor %}
+    {% block content %}{% endblock %}
   </body>
 </html>
