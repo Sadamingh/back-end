@@ -27,9 +27,17 @@ def login():
         if password != '1234':
             return redirect(url_for("home"))
         session['user'] = username
-        return redirect(url_for("user", name=username))
+        return redirect(url_for("user"))
     else:
+        if 'user' in session:
+            user = session['user']
+            return render_template("user.html", x=user)
         return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
