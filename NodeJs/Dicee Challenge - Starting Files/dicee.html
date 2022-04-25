@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Refresh Me</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img class="img1" src="">
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img class="img2" src="">
+      </div>
+
+      <div class="button">
+        <button type="button" name="button" onclick="rolldice()">Roll</button>
+      </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+    $('.img1').attr('src', 'images/dice1.png');
+    $('.img2').attr('src', 'images/dice1.png');
+
+    function rolldice() {
+      var randint_1 = Math.floor(Math.random() * 5) + 1;
+      var randint_2 = Math.floor(Math.random() * 5) + 1;
+      var img_1 = 'images/dice' + randint_1 + '.png';
+      var img_2 = 'images/dice' + randint_2 + '.png';
+      $('.img1').attr('src', img_1);
+      $('.img2').attr('src', img_2);
+      if (randint_1 > randint_2) {
+        $('h1').text("Player1 Wins!");
+      } else if (randint_1 < randint_2) {
+        $('h1').text("Player2 Wins!");
+      } else {
+        $('h1').text("Tie");
+      }
+
+    }
+
+    </script>
+
+  </body>
+
+  <footer>
+    www 🎲 App Brewery 🎲 com
+  </footer>
+</html>
