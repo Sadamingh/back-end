@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To do list</title>
+  </head>
+  <body>
+
+    <% if (day === "Saturday" || day === "Sunday") { %>
+      <h1 style="color: purple"><%= day %> List</h1>
+    <% } else { %>
+      <h1 style="color: blue"><%= day %> List</h1>
+    <% } %>
+
+    <p>Start working.</p>
+  </body>
+</html>

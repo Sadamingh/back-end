@@ -4,15 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
+app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
 
   var today = new Date();
-  if (today.getDate() === 6 || today.getDate() === 0) {
-    res.send("yeah, weekend");
-  } else {
-    res.sendFile(__dirname + "/index.html");
-  }
+  var dows = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var day = dows[today.getDay()];
+  res.render("list", {day: day});
 
 });
 
