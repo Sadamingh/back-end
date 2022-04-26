@@ -40,7 +40,7 @@ $(".btn").click(function() {
       $('#level-title').text("Game Over! Press any key to restart.");
     } else {
       if (userClickedPattern.length == gamePattern.length) {
-        setTimeout(nextSequence, 1000);
+        setTimeout(nextSequence, 500);
       }
     }
   }
