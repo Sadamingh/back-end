@@ -65,6 +65,20 @@ app.route("/articles/:title")
       }
     });
   })
+  .put(function(req, res) {
+    Article.replaceOne(
+      {title: req.params.title},
+      {title: req.body.title, text: req.body.text},
+      {overwrite: true},
+      function(err){
+        if (!err) {
+          res.send("Successfully updated article.");
+        } else {
+          res.send("An error occurs");
+        }
+      }
+    )
+  })
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
