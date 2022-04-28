@@ -31,7 +31,7 @@ app.route("/articles")
       } else {
         res.send(foundArticles);
       }
-    });
+    })
   })
   .post(function(req, res) {
     var title = req.body.title;
@@ -52,8 +52,8 @@ app.route("/articles")
       } else {
         res.send("Successfully delete all articles.");
       }
-    });
-  })
+    })
+  });
 
 app.route("/articles/:title")
   .get(function(req, res) {
@@ -63,7 +63,7 @@ app.route("/articles/:title")
       } else {
         res.send(foundArticles);
       }
-    });
+    })
   })
   .put(function(req, res) {
     Article.replaceOne(
@@ -79,6 +79,31 @@ app.route("/articles/:title")
       }
     )
   })
+  .patch(function(req, res) {
+    Article.updateOne(
+      {title: req.params.title},
+      {$set: req.body},
+      function(err){
+        if (!err) {
+          res.send("Successfully updated article.");
+        } else {
+          res.send("An error occurs");
+        }
+      }
+    )
+  })
+  .delete(function(req, res) {
+    Article.deleteOne(
+      {title: req.params.title},
+      function(err){
+        if (err) {
+          res.send(err);
+        } else {
+          res.send("Successfully delete 1 article.");
+        }
+      }
+    )
+  });
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
